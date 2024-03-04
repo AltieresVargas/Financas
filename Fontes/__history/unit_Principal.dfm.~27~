@@ -1,0 +1,503 @@
+object form_principal: Tform_principal
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsSingle
+  Caption = 'Finan'#231'as'
+  ClientHeight = 501
+  ClientWidth = 938
+  Color = clWindow
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnCreate = FormCreate
+  OnShow = FormShow
+  TextHeight = 15
+  object pnl_Fundo: TPanel
+    Left = 0
+    Top = 0
+    Width = 938
+    Height = 501
+    Align = alClient
+    AutoSize = True
+    Color = clSkyBlue
+    ParentBackground = False
+    TabOrder = 0
+    ExplicitWidth = 934
+    ExplicitHeight = 500
+    object pnl_Grid: TPanel
+      Left = 281
+      Top = 119
+      Width = 656
+      Height = 381
+      Align = alRight
+      Anchors = [akLeft, akTop, akRight]
+      Color = clSkyBlue
+      ParentBackground = False
+      TabOrder = 0
+      ExplicitWidth = 652
+      ExplicitHeight = 380
+      object dbg_RegistroFinancas: TDBGrid
+        Left = 1
+        Top = 25
+        Width = 654
+        Height = 355
+        Align = alClient
+        DataSource = db_RegistroFinancas
+        DrawingStyle = gdsGradient
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+        TabOrder = 0
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -12
+        TitleFont.Name = 'Segoe UI'
+        TitleFont.Style = []
+        OnDrawColumnCell = dbg_RegistroFinancasDrawColumnCell
+        OnDblClick = dbg_RegistroFinancasDblClick
+        Columns = <
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'id_operacao'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cod.'
+            Width = 46
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'str_tipo_operacao'
+            Title.Alignment = taCenter
+            Title.Caption = 'Tipo'
+            Width = 72
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'str_num_doc'
+            Title.Alignment = taCenter
+            Title.Caption = 'Num. Documento'
+            Width = 143
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'dt_operacao'
+            Title.Alignment = taCenter
+            Title.Caption = 'Dt. Opera'#231#227'o'
+            Width = 72
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'str_descricao'
+            Title.Alignment = taCenter
+            Title.Caption = 'Descri'#231#227'o'
+            Width = 174
+            Visible = True
+          end
+          item
+            Alignment = taRightJustify
+            Expanded = False
+            FieldName = 'fl_valor'
+            Title.Alignment = taCenter
+            Title.Caption = 'Valor'
+            Width = 77
+            Visible = True
+          end
+          item
+            Alignment = taRightJustify
+            Expanded = False
+            FieldName = 'fl_saldo'
+            Title.Alignment = taCenter
+            Title.Caption = 'Saldo'
+            Width = 77
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'dt_cadastro'
+            Title.Alignment = taCenter
+            Title.Caption = 'Cadastrado'
+            Visible = True
+          end
+          item
+            Alignment = taCenter
+            Expanded = False
+            FieldName = 'dt_alterado'
+            Title.Caption = 'Alterado'
+            Visible = True
+          end>
+      end
+      object Panel2: TPanel
+        Left = 1
+        Top = 1
+        Width = 654
+        Height = 24
+        Align = alTop
+        Color = clWhite
+        ParentBackground = False
+        TabOrder = 1
+        ExplicitWidth = 650
+        object Label3: TLabel
+          Left = 24
+          Top = 5
+          Width = 160
+          Height = 15
+          Caption = 'Rela'#231#227'o de Recitas e Despesas:'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWindowText
+          Font.Height = -12
+          Font.Name = 'Segoe UI'
+          Font.Style = []
+          ParentFont = False
+          StyleName = 'Windows'
+        end
+      end
+    end
+    object pnl_Edicao: TPanel
+      Left = 1
+      Top = 119
+      Width = 280
+      Height = 381
+      Align = alLeft
+      Color = clSkyBlue
+      Enabled = False
+      ParentBackground = False
+      TabOrder = 1
+      ExplicitHeight = 380
+      object pnl_TipoOp: TPanel
+        Left = 1
+        Top = 1
+        Width = 278
+        Height = 58
+        Align = alTop
+        TabOrder = 0
+        object cbx_Deposito: TCheckBox
+          Left = 45
+          Top = 26
+          Width = 97
+          Height = 17
+          Caption = '  Entrada'
+          TabOrder = 0
+          OnClick = cbx_DepositoClick
+        end
+        object cbx_Despesa: TCheckBox
+          Left = 167
+          Top = 27
+          Width = 97
+          Height = 17
+          Caption = '  Sa'#237'da'
+          TabOrder = 1
+          OnClick = cbx_DespesaClick
+        end
+        object StaticText3: TStaticText
+          Left = 1
+          Top = 1
+          Width = 276
+          Height = 19
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'Tipo de Opera'#231#227'o'
+          Color = clSkyBlue
+          ParentColor = False
+          TabOrder = 2
+          Transparent = False
+        end
+      end
+      object pnl_EditaInfo: TPanel
+        Left = 1
+        Top = 59
+        Width = 278
+        Height = 262
+        Align = alTop
+        Color = clSkyBlue
+        ParentBackground = False
+        TabOrder = 1
+        object Label1: TLabel
+          Left = 18
+          Top = 121
+          Width = 97
+          Height = 15
+          Caption = 'Data da Opera'#231#227'o:'
+        end
+        object edt_Valor: TLabeledEdit
+          Left = 164
+          Top = 142
+          Width = 109
+          Height = 23
+          Alignment = taRightJustify
+          CharCase = ecUpperCase
+          EditLabel.Width = 29
+          EditLabel.Height = 15
+          EditLabel.Caption = 'Valor:'
+          TabOrder = 2
+          Text = '0,00'
+          StyleName = 'Windows'
+          OnEnter = edt_ValorEnter
+          OnExit = edt_ValorExit
+          OnKeyPress = edt_ValorKeyPress
+        end
+        object edt_Descricao: TLabeledEdit
+          Left = 7
+          Top = 86
+          Width = 266
+          Height = 23
+          CharCase = ecUpperCase
+          EditLabel.Width = 54
+          EditLabel.Height = 15
+          EditLabel.Caption = 'Descri'#231#227'o:'
+          TabOrder = 1
+          Text = ''
+          StyleName = 'Windows'
+        end
+        object dt_DataOperacao: TDateTimePicker
+          Left = 18
+          Top = 142
+          Width = 97
+          Height = 23
+          Date = 44865.000000000000000000
+          Time = 0.056988784723216670
+          TabOrder = 3
+        end
+        object StaticText1: TStaticText
+          Left = 8
+          Top = 174
+          Width = 28
+          Height = 19
+          Caption = 'Obs:'
+          TabOrder = 5
+        end
+        object edt_NumDoc: TLabeledEdit
+          Left = 8
+          Top = 35
+          Width = 265
+          Height = 23
+          CharCase = ecUpperCase
+          EditLabel.Width = 113
+          EditLabel.Height = 15
+          EditLabel.Caption = 'N'#250'mero Documento:'
+          TabOrder = 0
+          Text = ''
+          StyleName = 'Windows'
+        end
+        object memo_Obs: TMemo
+          Left = 8
+          Top = 192
+          Width = 265
+          Height = 64
+          CharCase = ecUpperCase
+          TabOrder = 4
+          StyleName = 'Windows'
+        end
+      end
+      object pnl_Botoes: TPanel
+        Left = 1
+        Top = 321
+        Width = 278
+        Height = 62
+        Align = alTop
+        Color = clSkyBlue
+        ParentBackground = False
+        TabOrder = 2
+        object btn_Incluir: TButton
+          Left = 21
+          Top = 22
+          Width = 66
+          Height = 25
+          Caption = 'Incluir'
+          TabOrder = 0
+          StyleName = 'Windows'
+          OnClick = btn_IncluirClick
+        end
+        object btn_Delete: TButton
+          Left = 108
+          Top = 22
+          Width = 66
+          Height = 25
+          Caption = 'Deletar'
+          DoubleBuffered = False
+          ParentDoubleBuffered = False
+          TabOrder = 1
+          StyleName = 'Windows'
+          OnClick = btn_DeleteClick
+        end
+        object btn_Limpar: TButton
+          Left = 198
+          Top = 22
+          Width = 66
+          Height = 25
+          HelpType = htKeyword
+          HelpKeyword = 'Limpa os campos acima'
+          Caption = 'Limpar'
+          TabOrder = 2
+          StyleName = 'Windows'
+          OnClick = btn_LimparClick
+        end
+      end
+    end
+    object pnl_FundoPesquisa: TPanel
+      Left = 1
+      Top = 1
+      Width = 936
+      Height = 118
+      Align = alTop
+      Color = clSkyBlue
+      ParentBackground = False
+      TabOrder = 2
+      ExplicitWidth = 932
+      object edt_SaldoAtual: TLabeledEdit
+        Left = 642
+        Top = 79
+        Width = 79
+        Height = 23
+        Align = alCustom
+        Alignment = taRightJustify
+        EditLabel.Width = 66
+        EditLabel.Height = 15
+        EditLabel.Caption = 'Saldo Atual: '
+        Enabled = False
+        TabOrder = 3
+        Text = '0,00'
+        StyleName = 'Windows'
+        OnExit = edt_SaldoAtualExit
+      end
+      object edt_ConsCPF: TLabeledEdit
+        Left = 305
+        Top = 21
+        Width = 120
+        Height = 23
+        Alignment = taRightJustify
+        EditLabel.Width = 118
+        EditLabel.Height = 15
+        EditLabel.Caption = 'Digite CPF do Cliente: '
+        TabOrder = 1
+        Text = ''
+        OnEnter = edt_ConsCPFEnter
+        OnExit = edt_ConsCPFExit
+        OnKeyDown = edt_ConsCPFKeyDown
+      end
+      object edt_NomeCliente: TLabeledEdit
+        Left = 305
+        Top = 79
+        Width = 304
+        Height = 23
+        CharCase = ecUpperCase
+        EditLabel.Width = 76
+        EditLabel.Height = 15
+        EditLabel.Caption = 'Nome Cliente:'
+        TabOrder = 0
+        Text = ''
+        StyleName = 'Windows'
+        OnKeyDown = edt_NomeClienteKeyDown
+      end
+      object btn_Pesquisa: TButton
+        Left = 525
+        Top = 20
+        Width = 84
+        Height = 25
+        Caption = 'Pesquisar'
+        TabOrder = 2
+        StyleName = 'Windows'
+        OnClick = btn_PesquisaClick
+      end
+      object btn_CadCli: TButton
+        Left = 642
+        Top = 20
+        Width = 76
+        Height = 25
+        Caption = 'Novo Cliente'
+        TabOrder = 4
+        StyleName = 'Windows'
+        OnClick = btn_CadCliClick
+      end
+      object pnl_PesqPeriodo: TPanel
+        Left = 1
+        Top = 1
+        Width = 279
+        Height = 116
+        Align = alLeft
+        Enabled = False
+        TabOrder = 5
+        object Label4: TLabel
+          Left = 34
+          Top = 23
+          Width = 29
+          Height = 15
+          Caption = 'In'#237'cio'
+        end
+        object Label5: TLabel
+          Left = 160
+          Top = 24
+          Width = 20
+          Height = 15
+          Caption = 'Fim'
+        end
+        object Label6: TLabel
+          Left = 1
+          Top = 1
+          Width = 277
+          Height = 15
+          Align = alTop
+          Alignment = taCenter
+          Caption = 'Defina periodo de Pesquisa'
+          ExplicitWidth = 143
+        end
+        object dt_Inicio: TDateTimePicker
+          Left = 34
+          Top = 39
+          Width = 94
+          Height = 23
+          Date = 44860.000000000000000000
+          Time = 0.056988784723216670
+          TabOrder = 0
+        end
+        object dt_Fim: TDateTimePicker
+          Left = 160
+          Top = 39
+          Width = 94
+          Height = 23
+          Date = 44860.000000000000000000
+          Time = 0.056988784723216670
+          TabOrder = 1
+        end
+        object btn_PesqPeriodo: TButton
+          Left = 108
+          Top = 77
+          Width = 66
+          Height = 25
+          Caption = 'Pesquisar'
+          TabOrder = 2
+          StyleName = 'Windows'
+          OnClick = btn_PesqPeriodoClick
+        end
+      end
+      object btn_Servidor: TButton
+        Left = 752
+        Top = 20
+        Width = 81
+        Height = 25
+        Caption = 'Conf. Servidor'
+        TabOrder = 6
+        StyleName = 'Windows'
+        OnClick = btn_ServidorClick
+      end
+    end
+  end
+  object db_RegistroFinancas: TDataSource
+    OnDataChange = db_RegistroFinancasDataChange
+    Left = 717
+    Top = 241
+  end
+  object db_Clientes: TDataSource
+    Left = 621
+    Top = 265
+  end
+end

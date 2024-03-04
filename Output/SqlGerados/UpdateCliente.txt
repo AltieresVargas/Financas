@@ -1,0 +1,15 @@
+Update tb_clientes set            
+str_nome         = :p_str_nome,      
+str_cpf          = :p_str_cpf,    
+str_telefone     = :p_str_telefone,               
+dt_nascimento    = :p_dt_nascimento,               
+dt_alterado      = :p_dt_alterado,            
+str_endereco     = :p_str_endereco,                
+str_num          = :p_str_num,                
+str_complemento  = :p_str_complemento,                
+str_cep          = :p_str_cep,                
+str_bairro       = :p_str_bairro,                
+str_cidade       = :p_str_cidade,                
+str_uf           = :p_str_uf,                
+str_obs          = :p_str_obs                
+where id_cliente = :p_id_cliente              

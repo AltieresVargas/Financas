@@ -1,0 +1,4 @@
+Update tb_operacao_financeira set    
+fl_saldo             = :p_fl_saldo            
+where cli_id_cliente = :p_id_Cli              
+ and id_operacao     = :p_id_operacao         

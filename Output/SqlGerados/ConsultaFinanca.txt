@@ -1,0 +1,4 @@
+Select id_operacao, cli_id_cliente, str_tipo_operacao, str_num_doc,
+ fl_valor,fl_saldo, str_descricao, dt_operacao, dt_alterado, dt_cadastro, str_obs
+from tb_operacao_financeira  
+where  cli_id_cliente = :p_Texto order by id_operacao desc

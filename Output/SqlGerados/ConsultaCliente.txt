@@ -1,0 +1,5 @@
+Select id_cliente, str_nome, str_cpf, str_telefone,dt_nascimento,
+dt_cadastro, dt_alterado, str_endereco, str_num, str_cep, str_complemento,
+str_bairro, str_cidade, str_uf, str_obs
+from tb_clientes where  (str_cpf like  :p_Texto  or 
+                        str_nome like  :p_Texto )

@@ -1,0 +1,1 @@
+SELECT Max(id_operacao) AS maxID FROM tb_operacao_financeira where  cli_id_cliente = 0

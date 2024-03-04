@@ -1,0 +1,29 @@
+object form_dados: Tform_dados
+  OnCreate = DataModuleCreate
+  OnDestroy = DataModuleDestroy
+  Height = 480
+  Width = 640
+  object FDConnection: TFDConnection
+    Params.Strings = (
+      'Database=financas'
+      'User_Name=root'
+      'Password=98765432'
+      'Server=localhost'
+      'Port=3307'
+      'DriverID=MySQL')
+    Left = 40
+    Top = 32
+  end
+  object FDPhysMySQLDriverLink: TFDPhysMySQLDriverLink
+    VendorLib = 
+      'C:\Users\tiere\Desktop\Prova Data Cempro\Financas\Output\libmysq' +
+      'l.dll'
+    Left = 184
+    Top = 48
+  end
+  object FDGUIxWaitCursor: TFDGUIxWaitCursor
+    Provider = 'Forms'
+    Left = 336
+    Top = 56
+  end
+end

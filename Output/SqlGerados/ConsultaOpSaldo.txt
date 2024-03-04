@@ -1,0 +1,1 @@
+SELECT id_operacao, str_tipo_operacao, fl_valor FROM Financas.tb_operacao_financeira where id_operacao > 13 and cli_id_cliente = 1

@@ -1,0 +1,1 @@
+SELECT MIN(id_operacao) AS crescente FROM tb_operacao_financeira where  cli_id_cliente = 0

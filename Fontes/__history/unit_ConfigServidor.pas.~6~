@@ -1,0 +1,99 @@
+unit unit_ConfigServidor;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Buttons;
+
+type
+  Tform_Login = class(TForm)
+    shp_fundo: TShape;
+    pnl_Fundo: TPanel;
+    pnl_Bottom: TPanel;
+    pnl_Meio: TPanel;
+    pnl_Topo: TPanel;
+    img_BaseDados: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    pnl_Botoes: TPanel;
+    pnl_Nao: TPanel;
+    btn_Nao: TSpeedButton;
+    pnl_Sim: TPanel;
+    btn_Sim: TSpeedButton;
+    Label3: TLabel;
+    Label4: TLabel;
+    Panel1: TPanel;
+    Panel2: TPanel;
+    edt_CaminhoServidor: TEdit;
+    edt_Porta: TEdit;
+    edt_NomeBD: TEdit;
+    edt_Login: TEdit;
+    edt_Senha: TEdit;
+    Label6: TLabel;
+    Label5: TLabel;
+    Label7: TLabel;
+    Label8: TLabel;
+    Label9: TLabel;
+    edt_CaminhoBDAtual: TEdit;
+    edt_NomeBDAtual: TEdit;
+    edt_LoginAtual: TEdit;
+    edt_SenhaAtual: TEdit;
+    Label10: TLabel;
+    Label11: TLabel;
+    Label12: TLabel;
+    Label13: TLabel;
+    Label14: TLabel;
+    edt_PortaAtual: TEdit;
+    Label15: TLabel;
+    procedure btn_NaoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  form_Login: Tform_Login;
+
+implementation
+
+uses
+  unit_Dados,
+  unit_Funcoes;
+
+{$R *.dfm}
+
+procedure Tform_Login.btn_NaoClick(Sender: TObject);
+begin
+         form_Dados.Conexao.Servidor :=  edt_CaminhoServidor.Text;
+         form_Dados.Conexao.Base     :=  edt_NomeBD.Text;
+         form_Dados.Conexao.Login    :=  edt_Login.Text;
+         form_Dados.Conexao.Senha    :=  edt_Senha.Text;
+         form_Dados.Conexao.Porta    :=  edt_Porta.Text;
+    if form_dados.Conexao.fnc_conectar_banco_dados then
+    begin
+          form_dados.Conexao.prc_GravarArquivoINI;
+
+          frc_criar_msg('CONEXÃO AO BANCO DE DADOS',
+                'CONECTADO AO BANCO DE DADOS',
+                'Conexão com o Banco de Dados, Realizado com SUCESSO ' +
+                form_Dados.Conexao.MsgErro ,
+                ExtractFilePath(Application.ExeName) +'\icones\Conectado_database_icon.bmp',
+                'OK');
+          Close;
+   end else
+   begin
+           frc_criar_msg('CONEXÃO AO BANCO DE DADOS',
+                'ERRO AO TENTAR CONECTAR BANCO DE DADOS',
+                'Não foi possível conectar ao banco de dados, possíveis causas: ' +
+                form_Dados.Conexao.MsgErro ,
+                ExtractFilePath(Application.ExeName) +'\icones\falha_database_icon.bmp',
+                'OK');
+           edt_CaminhoServidor.SetFocus;
+   end;
+end;
+
+
+
+end.

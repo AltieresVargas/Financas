@@ -1,0 +1,19 @@
+unit unit_Funcoes;
+
+interface
+        function prc_criar_msg (TituloJanela, TutuloMSG, MSG, Icone : String): Boolean;
+implementation
+      uses unit_Menssagens;
+
+      function prc_criar_msg (TituloJanela, TutuloMSG, MSG, Icone : String): Boolean;
+        begin
+          result := false;
+
+
+          form_mensagens := Tform_mensagens.Create( nil );
+          form_mensagens
+          form_mensagens
+          form_mensagens
+          form_mensagens.lb_titulo
+        end;
+end.

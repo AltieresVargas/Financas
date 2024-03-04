@@ -1,0 +1,6 @@
+Insert into tb_operacao_financeira (cli_id_cliente, str_tipo_operacao,
+ str_num_doc, fl_valor,fl_saldo, str_descricao, dt_operacao,
+ dt_alterado, dt_cadastro, str_obs)
+values(:p_cli_id_cliente, :p_str_tipo_operacao, :p_str_num_doc,
+ :p_fl_valor, :p_fl_saldo, :p_str_descricao, :p_dt_operacao, 
+:p_dt_alterado, :p_dt_cadastro, :p_str_obs)

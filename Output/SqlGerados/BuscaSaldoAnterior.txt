@@ -1,0 +1,3 @@
+Select fl_saldo 
+from tb_operacao_financeira  
+where id_operacao = :p_id_Operacao and cli_id_cliente = :p_id_Cli 

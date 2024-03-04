@@ -1,0 +1,22 @@
+unit unit_Funcoes;
+
+interface
+        function prc_criar_msg (TituloJanela, TutuloMSG, MSG, Icone, Tipo : String): Boolean;
+implementation
+      uses unit_Menssagens;
+
+      function prc_criar_msg (TituloJanela, TutuloMSG, MSG, Icone, Tipo : String): Boolean;
+        begin
+          result := false;
+
+          form_Menssagens := Tform_Menssagens.Create( nil );
+          form_Menssagens.sTituloJanela := TituloJanela;
+          form_Menssagens.sTituloMsg    := TutuloMSG;
+          form_Menssagens.sMsg          := MSG;
+          form_Menssagens.sCaminhoImg   := Icone;
+          form_Menssagens.sTipo         := Tipo;
+
+          form_Menssagens.ShowModal;
+          Result := form_Menssagens.bRespostaMSG;
+        end;
+end.

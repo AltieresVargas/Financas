@@ -1,0 +1,109 @@
+unit unit_CadFinancas;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.Grids, Vcl.ComCtrls, Data.DB, Vcl.DBGrids, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+
+type
+  Tform_CadFinancas = class(TForm)
+    pnl_Principal: TPanel;
+    pnl_Grid: TPanel;
+    Panel2: TPanel;
+    Label3: TLabel;
+    pnl_Edicao: TPanel;
+    pnl_FundoPesquisa: TPanel;
+    edt_SaldoAtual: TLabeledEdit;
+    edt_ConsCPF: TLabeledEdit;
+    edt_NomeCliente: TLabeledEdit;
+    btn_Pesquisa: TButton;
+    dbg_RegistroFinancas: TDBGrid;
+    pnl_TipoOp: TPanel;
+    cbx_Deposito: TCheckBox;
+    cbx_Despesa: TCheckBox;
+    StaticText3: TStaticText;
+    pnl_EditaInfo: TPanel;
+    pnl_Botoes: TPanel;
+    Label2: TLabel;
+    Label1: TLabel;
+    edt_Valor: TLabeledEdit;
+    edt_Descricao: TLabeledEdit;
+    dt_DataInclusao: TDateTimePicker;
+    dt_DataOperacao: TDateTimePicker;
+    ed_Obs: TEdit;
+    StaticText1: TStaticText;
+    btn_Incluir: TButton;
+    btn_Delete: TButton;
+    btn_Limpar: TButton;
+    edt_NumDoc: TLabeledEdit;
+    db_RegistroFinancas: TDataSource;
+    procedure cbx_DepositoClick(Sender: TObject);
+    procedure cbx_DespesaClick(Sender: TObject);
+    procedure cbx_AlterarClick(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure dbg_RegistroFinancasKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure btn_DeleteClick(Sender: TObject);
+    procedure btn_PesquisaClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  form_CadFinancas: Tform_CadFinancas;
+
+implementation
+
+uses
+  unit_Dados;
+
+{$R *.dfm}
+
+procedure Tform_CadFinancas.btn_DeleteClick(Sender: TObject);
+begin
+    if( NOT (dbg_RegistroFinancas.DataSource.DataSet.IsEmpty)) then
+        form_dados.RegistroFinancas.prc_deleta_item(dbg_RegistroFinancas.DataSource.DataSet.FieldByName('id_operacao').AsInteger) ;
+end;
+
+procedure Tform_CadFinancas.btn_PesquisaClick(Sender: TObject);
+begin
+
+  // db_RegistroFinancas.DataSet := form_dados.RegistroFinancas.fnc_Cosulta(edt);
+end;
+
+procedure Tform_CadFinancas.cbx_AlterarClick(Sender: TObject);
+begin
+  btn_Incluir.Caption := 'Alterar';
+end;
+
+procedure Tform_CadFinancas.cbx_DepositoClick(Sender: TObject);
+begin
+  cbx_Despesa.Visible := false;
+end;
+
+procedure Tform_CadFinancas.cbx_DespesaClick(Sender: TObject);
+begin
+   cbx_Deposito.Visible := false;
+end;
+
+procedure Tform_CadFinancas.dbg_RegistroFinancasKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+    if( NOT (dbg_RegistroFinancas.DataSource.DataSet.IsEmpty)) AND (Key = VK_DELETE) then
+         btn_DeleteClick(sender);
+end;
+
+procedure Tform_CadFinancas.FormClose(Sender: TObject;
+  var Action: TCloseAction);
+begin
+  Action := caFree;
+end;
+
+end.
